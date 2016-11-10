@@ -1,0 +1,42 @@
+METHOD RK4
+
+STARTTIME = 0
+STOPTIME=365
+DT = 1
+
+
+d/dt (Ai) =Phi*Fi* (1-(Ai + Ap)/C) - (Gamma+Mua+Delta)*Ai
+d/dt (Ap) = Phi*(1 -(Ai + Ap)/C)*Fp -(Gamma+Mua)*Ap + Delta*Ai
+d/dt (I) = R*Gamma*Ai -Betai*M*I/(M+Ms) -Betas*Ms*I/(M+Ms) -Mu*I
+d/dt (P) = R*Gamma*Ap -Betap*M*P/(M+Ms) -Mu*P
+d/dt (Fi) = Betai*M*I/(M+Ms) - Muf*Fi
+d/dt (Fp) = Betap*M*P/(M+Ms) - Muf*Fp
+d/dt (M) = (1-R)*Gamma*(Ai+Ap) - Mum*M
+d/dt (Ms) = Alpha - Mums*Ms
+
+
+init Ai = 100
+init Ap = 100
+init I = 100
+init P = 100
+init Fi = 100
+init Fp = 100
+init M = 100
+init Ms = 0
+
+
+Phi = 2
+Gamma = 0.1
+Delta = 0.01
+Alpha = 0
+C = 800
+R = 0.5
+Mu = 0.1
+Mua = 0.5 
+Muf = 0.1
+Mum = 0.1
+Mums = 0.1
+Betai = 1
+Betas = 1
+Betap = 1
+
